@@ -24,6 +24,7 @@ Expressões Regulares:
 		"{n}": serve para buscar exatemente n vezes (n é um número definido);
 		"{n,}": serve para buscar no mínimo n vezes;
 		"{n,m}": serve para buscar no mínimo n+1 vezes, no máximo m vezes;
+		"\w": significa word char e é um atalho para [A-Za-z0-9_];
 		
 	Exercícios:
 		1) Buscar todos os números de 1 dígito na string:
@@ -123,8 +124,36 @@ Expressões Regulares:
 		
 		20) Buscar placas de carros (tanto no formato antigo quanto no novo), com traço ou não
 			target string: "Exemplo de placa: KMG-8G89";
-			patter: "[A-Z]{3}-?\d[0-9,A-Z]\d{2}";
+			pattern: "[A-Z]{3}-?\d[0-9,A-Z]\d{2}";
 			match: "KMG-8G89";
 		
+		21) Buscar a nota e os nomes dos alunos que tiraram notas entre 7.2 e 7.9:
+			target string: "9.8 - Robson, 7.1 - Teresa, 4.5 - Armênio, 6.5 - Zulu, 7.7 - Stefania, 7.8 - João, 5.0 - Romeu, 7.2 - Pompilho, 3.1 - Reinaldo, 7.3 - Bernadete, 4.7 - Cinério ";
+			pattern: "7\.[2-9]\s+-\s+[A-ZÀ-Ú][a-zà-ú]+";
+			match: "7.7 - Stefania | 7.8 - João | 7.2 - Pompilho | 7.3 - Bernadete";
+		
+		22) Buscar a nota e o nome dos alunos que precisam de meio ponto ou menos para atingir a nota 8:
+			target string: "10 - Bruce, 9.5 - Miranda, 7.9    - Bob, 10 - Zimbabue, 7.5 - Bety"
+			pattern: "7\.[5-9]\s+-\s+[A-ZÀ-Ú][a-zà-ú]+"
+			match: "7.9    - Bob | 7.5 - Bety"
+		
+		23) Buscar as palavras GARROTE, SERROTE e ROTEIRO:
+			target string: "BALEIRO GARROTE SERROTE GOLEIRO ROTEIRO "
+			pattern: "[A-Z]*ROT[A-Z]*"
+			match: "GARROTE | SERROTE | ROTEIRO"
+		
+		24) Buscar "?classes+poderosas*":
+			target string: "?classes+poderosas*";
+			pattern: "[a-z?*+]+";
+			match: "?classes+poderosas*";
 			
+		25) Validar um username de usuário com as seguintes validações:
+			1) o limite é de 10 caracteres;
+			2) o primeiro caractere deve ser uma letra do alfabeto (tanto minúscula quanto maiúscula), não pode ser um número;
+			3) a partir do segundo caractere podemos ter letras (tanto minúscula quanto maiúscula) e números.
+			
+			target string: "A8am90818t";
+			pattern: "[a-zA-Z][a-zA-Z0-9]{0,9}";
+			match: "A8am90818t";
+		
 		
